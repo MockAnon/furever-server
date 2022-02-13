@@ -45,21 +45,23 @@ module.exports = (dataHelpers) => {
       password: req.body.password
     };
 
+    
     // grab user details with login details
     const user = await dataHelpers.getUserDetails(req.body.username);
-
+    
     // guard statment for no existing user
     if (!user) {
       res.sendStatus(401);
       return;
     }
-
+    
     // using bcrypt to check password match
     const match = await bcrypt.compare(inputObj.password, user.passwordDigest);
-
+    
     if (match) {
       delete user.passwordDigest;
       const jsonOutput = UserSerializer.serialize(user);
+      console.log("LOGIN", jsonOutput);
       res.json(jsonOutput);
     } else {
       res.sendStatus(401);
