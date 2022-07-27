@@ -3,10 +3,11 @@ import express from 'express';
 import logger from 'morgan';
 import cors from 'cors';
 
+
 require('dotenv').config();
 
 // firebase
-const firebase = require('firebase-admin');
+const firebase = require('firebase-admin'); 
 //const serviceAccount = require('./serviceAccountKey.json');
 
 const serviceAccount = {
