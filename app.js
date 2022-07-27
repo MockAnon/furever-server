@@ -21,11 +21,12 @@ const DataHelpers = require('./helpers/data-helpers.js')(db);
 
 // Setup express and environment
 const app = express();
-// const debug = Debug('server:app');
-app.set('env', process.env.APP_ENV || 'development');
 
 // Enable All CORS Requests
 app.use(cors());
+
+// const debug = Debug('server:app');
+app.set('env', process.env.APP_ENV || 'development');
 
 // HTTP Request logging (disabled in test mode)
 if (app.settings.env !== 'test') {
