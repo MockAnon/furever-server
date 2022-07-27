@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "node ./bin/start",
-    "start:dev": "nodemon -L ./bin/start",
+    "start": "nodemon -L ./bin/start",
     "test": "mocha --recursive './test/*Test.js' --compilers js:babel-core/register"
   },
   "dependencies": {
