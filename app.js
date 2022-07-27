@@ -14,7 +14,7 @@ const serviceAccount = {
   "type": "service_account",
   "project_id": process.env.PROJ_ID,
   "private_key_id": process.env.KEY_ID,
-  "private_key": process.env.PRIV_KEY,
+  "private_key": process.env.PRIV_KEY.replace(/\\n/g, '\n'),
   "client_email": process.env.CL_EMAIL,
   "client_id": process.env.CL_ID,
   "auth_uri": process.env.AUTH_URL,
