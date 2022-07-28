@@ -10,21 +10,26 @@ require('dotenv').config();
 const firebase = require('firebase-admin'); 
 //const serviceAccount = require('./serviceAccountKey.json');
 
-// const serviceAccount = {
-//   "type": "service_account",
-//   "project_id": process.env.PROJ_ID,
-//   "private_key_id": process.env.KEY_ID,
-//   "private_key": process.env.PRIV_KEY.replace(/\\n/g, '\n'),
-//   "client_email": process.env.CL_EMAIL,
-//   "client_id": process.env.CL_ID,
-//   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-//   "token_uri": "https://oauth2.googleapis.com/token",
-//   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-//   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-oxfsb%40furever-7cf38.iam.gserviceaccount.com"
-// };
 
-const serviceAccount = JSON.parse(process.env['FIREBASE_CRED']);
+ const serviceAccount = {
+   "type": "service_account",
+   "project_id": process.env.PROJ_ID,
+   "private_key_id": process.env.KEY_ID,
+   "private_key": JSON.parse(JSON.stringify(process.env.PRIV_KEY.replace(/\\n/g, '\n'))),
+   "client_email": process.env.CL_EMAIL,
+   "client_id": process.env.CL_ID,
+   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+   "token_uri": "https://oauth2.googleapis.com/token",
+   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-oxfsb%40furever-7cf38.iam.gserviceaccount.com"
+ };
 
+
+//const serviceEnv = JSON.stringify(process.env['FIREBASE_CRED']).replace(/\\n/g, '\n');
+
+//const serviceAccount = JSON.parse(serviceEnv);
+
+console.log(serviceAccount);
 
 firebase.initializeApp({
   credential: firebase.credential.cert(serviceAccount)
