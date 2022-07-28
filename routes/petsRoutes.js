@@ -7,15 +7,10 @@ const router = express.Router();
 module.exports = (dataHelpers) => {
   // route to get all of the pets
   router.get('/', async (req, res) => {
-    try{
       const result = await dataHelpers.returnAll();
 
       const jsonOutput = PetsSerializer.serialize(result);
       res.json(jsonOutput);
-    } catch (err) {
-      console.log(err);
-      res.json(err);
-    }
   });
 
   // routed to AdoptFilter to find pets by filters
