@@ -23,7 +23,7 @@ const firebase = require('firebase-admin');
 //   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-oxfsb%40furever-7cf38.iam.gserviceaccount.com"
 // };
 
-const serviceAccount = JSON.parse(process.env.FIREBASE_CRED);
+const serviceAccount = JSON.parse(process.env['FIREBASE_CRED']);
 
 
 firebase.initializeApp({
